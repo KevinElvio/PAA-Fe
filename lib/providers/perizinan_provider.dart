@@ -20,6 +20,7 @@ class PerizinanProvider extends ChangeNotifier {
       final storedToken = await _secureStorage.read(key: 'token');
       final data =
           await _perizinanService.createPerizinan(newPerizinan, storedToken!);
+    
     } catch (e) {
       print('Error create perizinan: $e');
       throw Exception('Failed to create perizinan $e');
@@ -27,6 +28,7 @@ class PerizinanProvider extends ChangeNotifier {
     _isLoading = false;
     notifyListeners();
   }
+
 
   Future<void> getAllPerizinan() async {
     _isLoading = true;

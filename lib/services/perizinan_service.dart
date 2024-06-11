@@ -1,20 +1,25 @@
 part of 'services.dart';
 
 class PerizinanService {
-  Future<Perizinan> createPerizinan(
-      Perizinan newPerizinan, String token) async {
+  Future<Perizinan> createPerizinan(Perizinan newPerizinan, String token) async {
     final url = Uri.parse('${ApiHelper.baseUrl}/perizinan');
     try {
-      final response = await http.post(url,
-          headers: ApiHelper.getHeaders(token),
-          body: jsonEncode(newPerizinan.toJson()));
+      final response = await http.post(
+        url,
+        headers: ApiHelper.getHeaders(token),
+        body: jsonEncode(newPerizinan.toJson()),
+      );
       final responseData = ApiHelper.handleResponse(response);
+      if (responseData == null || responseData['data'] == null) {
+        throw Exception('Response data is null');
+      }
       final newPerizinanData = Perizinan.fromJson(responseData['data']);
       return newPerizinanData;
     } catch (e) {
       return ApiHelper.handleError(e);
     }
   }
+
 
   Future<List<Perizinan>> getAllPerizinan() async {
     final url = Uri.parse('${ApiHelper.baseUrl}/perizinan');

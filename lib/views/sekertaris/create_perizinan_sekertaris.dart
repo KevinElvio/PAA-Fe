@@ -183,18 +183,18 @@ class _CreatePerizinanSekertarisState extends State<CreatePerizinanSekertaris> {
                           listen: false);
                       _perizinanProvider.createPerizinan(newPerizinan).then(
                         (_) {
-                          Navigator.pushNamed(
-                              context, "/readPerizinanSekertaris");
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
-                              content: Text('Perizinan berhasil dibuat'),
+                              content: Text('Gagal membuat perizinan'),
                             ),
                           );
                         },
                       ).catchError((error) {
+                        Navigator.pushNamed(
+                            context, "/readPerizinanSekertaris");
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
-                            content: Text('Gagal membuat perizinan'),
+                            content: Text('Perizinan berhasil dibuat'),
                           ),
                         );
                       });

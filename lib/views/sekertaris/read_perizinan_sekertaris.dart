@@ -17,7 +17,6 @@ class _ReadPerizinanSekertarisState extends State<ReadPerizinanSekertaris> {
   void initState() {
     super.initState();
     _loadPerizinanData();
-    checkToken();
   }
 
   void _loadPerizinanData() {
@@ -26,19 +25,7 @@ class _ReadPerizinanSekertarisState extends State<ReadPerizinanSekertaris> {
             .getAllPerizinan());
   }
 
-  Future<void> checkToken() async {
-    final userProvider = Provider.of<UserProvider>(context, listen: false);
-    final token = await userProvider.getTokenFromStorage();
-    if (token == null) {
-      // Jika tidak ada token, arahkan pengguna ke halaman login
-      Navigator.pushReplacementNamed(context, '/login');
-    }
-  }
-
   Widget cardPerizinan(Perizinan perizinan, BuildContext context) {
-
-    
-
     return Container(
       decoration: const BoxDecoration(
         border: Border(
@@ -139,10 +126,13 @@ class _ReadPerizinanSekertarisState extends State<ReadPerizinanSekertaris> {
                       context,
                       '/updatePerizinanSekertaris',
                       arguments: {
-                        'idPerizinan': perizinan.perizinanId,
+                        'idPerizinan': perizinan.idDetailPerizinan,
+                        'namaPerizinan': perizinan.namaPerizinan,
                         'jenisPerizinan': perizinan.perizinanId,
                         'deskripsi': perizinan.deskripsi,
-                        'namaPengaju': perizinan.namaPengaju,
+                        'namaPengajuLama': perizinan.namaPengaju,
+                        'pjId': perizinan.pjId,
+                        'namaPj': perizinan.namaPJ,
                       },
                     ).then((result) {
                       if (result == true) {
@@ -176,12 +166,9 @@ class _ReadPerizinanSekertarisState extends State<ReadPerizinanSekertaris> {
       ),
     );
   }
-    
+
   @override
   Widget build(BuildContext context) {
-
-    
-
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -192,15 +179,7 @@ class _ReadPerizinanSekertarisState extends State<ReadPerizinanSekertaris> {
               fontSize: 25,
               fontWeight: FontWeight.bold),
         ),
-        actions: [
-          IconButton(
-              icon: Icon(Icons.logout),
-              onPressed: () {
-                 Provider.of<UserProvider>(context, listen: false).logoutUser(context).then((_) {
-                  Navigator.pushReplacementNamed(context, '/login');
-                });
-              })
-        ],
+        actions: [],
         centerTitle: true,
       ),
       body: Consumer<PerizinanProvider>(
@@ -214,6 +193,7 @@ class _ReadPerizinanSekertarisState extends State<ReadPerizinanSekertaris> {
           }
 
           return ListView.builder(
+            padding: EdgeInsets.only(bottom: 100),
             itemCount: perizinanProvider.perizinan.length,
             itemBuilder: (context, index) {
               final perizinan = perizinanProvider.perizinan[index];

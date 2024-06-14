@@ -132,6 +132,7 @@ class _ReadPerizinanSekertarisState extends State<ReadPerizinanSekertaris> {
                         'deskripsi': perizinan.deskripsi,
                         'namaPengajuLama': perizinan.namaPengaju,
                         'pjId': perizinan.pjId,
+                        'tanggal': perizinan.tanggal,
                         'namaPj': perizinan.namaPJ,
                       },
                     ).then((result) {
@@ -179,7 +180,6 @@ class _ReadPerizinanSekertarisState extends State<ReadPerizinanSekertaris> {
               fontSize: 25,
               fontWeight: FontWeight.bold),
         ),
-        actions: [],
         centerTitle: true,
       ),
       body: Consumer<PerizinanProvider>(

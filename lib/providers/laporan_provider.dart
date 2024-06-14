@@ -38,7 +38,7 @@ class LaporanProvider extends ChangeNotifier{
       print('Error get all laporan saldo kas: $e');
       throw Exception('Failed to get all laporan  saldo kas $e');
     }
-  
+
     _isLoading = false;
     notifyListeners();
   }

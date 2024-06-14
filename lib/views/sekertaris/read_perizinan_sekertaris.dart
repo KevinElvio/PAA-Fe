@@ -170,9 +170,17 @@ class _ReadPerizinanSekertarisState extends State<ReadPerizinanSekertaris> {
 
   @override
   Widget build(BuildContext context) {
+    final UserProvider userProvider = Provider.of<UserProvider>(context);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        actions: [
+          IconButton(onPressed: (){
+            userProvider.logoutUser(context).then((_) {
+                    Navigator.pushNamedAndRemoveUntil(context, '/login',(Route<dynamic> route) => false,);
+                  });
+          }, icon: Icon(Icons.logout))
+        ],
         title: Text(
           "Perizinan",
           style: GoogleFonts.poppins(

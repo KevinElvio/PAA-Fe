@@ -164,14 +164,14 @@ class _LoginPageState extends State<LoginPage> {
                       case 3:
                         Navigator.pushNamedAndRemoveUntil(
                           context,
-                          '/homepageSekertaris',
+                          '/readPerizinanSekertaris',
                           (Route<dynamic> route) => false,
                         );
                         break;
                       case 4:
                         Navigator.pushNamedAndRemoveUntil(
                           context,
-                          '/homepageTakmir',
+                          '/readPerizinanSekertaris',
                           (Route<dynamic> route) => false,
                         );
                         break;

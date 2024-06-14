@@ -54,9 +54,9 @@ class _HomepageJamaahState extends State<HomepageJamaah> {
               callUser(),
               mainCard(context),
               const SizedBox(height: 20),
-              cardMenu('Qurban', const Color.fromARGB(255, 61, 169, 171), () {
-                Navigator.pushNamed(context, '/qurbanJamaah');
-              }, context)
+              // cardMenu('Qurban', const Color.fromARGB(255, 61, 169, 171), () {
+              //   Navigator.pushNamed(context, '/qurbanJamaah');
+              // }, context)
             ],
           ),
         ],

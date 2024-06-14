@@ -292,14 +292,14 @@ class _HomePageBendaharaState extends State<HomePageBendahara> {
                           size: 18,
                         ),
                         color: Colors.red),
-                    cardMenu(
-                      "assets/images/persetujuan.png",
-                      "Persetujuan\nSaldo Kas",
-                      () {
-                        Navigator.pushNamed(
-                            context, "/readpersetujuanbendahara");
-                      },
-                    ),
+                    // cardMenu(
+                    //   "assets/images/persetujuan.png",
+                    //   "Persetujuan\nSaldo Kas",
+                    //   () {
+                    //     Navigator.pushNamed(
+                    //         context, "/readpersetujuanbendahara");
+                    //   },
+                    // ),
                   ],
                 ),
               ),
